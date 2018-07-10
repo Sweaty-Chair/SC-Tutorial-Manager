@@ -5,7 +5,7 @@ using System.Collections;
 namespace SweatyChair
 {
 
-    public class StateController : EventTrigger
+    public class StateTrigger : EventTrigger
     {
 
         [SerializeField] private State _targetState = State.None;
