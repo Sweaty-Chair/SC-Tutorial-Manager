@@ -1,3 +1,5 @@
+![Block42](http://assets.sweatychair.com/images/sweaty-chair/logo_sweaty_chair_square_120.png)
+
 # SweatyChair Tutorial Manager
 
 ## About
