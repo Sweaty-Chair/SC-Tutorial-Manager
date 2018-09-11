@@ -54,9 +54,9 @@ A demo scene is located at [Demo](Assets/SweatyChair/Tutorials/Demo/) folder, op
 The tutorial has validator call DemoTutorialValidator which always return true in `IsValidated()` and executing the tutorial. You should fill in the logic on how to trigger tutorial here, such as after players playing 15 games.
 A [DemoTutorial.prefab](Assets/SweatyChair/Tutorials/Demo/DemoTutorial.prefab) contains a number of TutorialSteps as children.
 
-## Using with other SW plugins
-- **GameSave/GameSpark** - Check the previous progress of a returning player and skip tutorials if needed. Each TutorialValidator should override `IsCompletedForReturnPlayer()` to determine should that tutorial be skipped (set completed) for the returning player. For example, skip first tutorial if player's already level 2. `IsCompletedForReturnPlayer()` could be same to `IsValidated()` in most cases but not neccessary.
-- [**StateManager**](Assets/SweatyChair/Common/State/StateManager.cs) - Trigger tutorial by game state, or filter the check for particular game states for minimizing the check performance.
+## Other SweatyChair plugins
+- [**StateManager**](Assets/SweatyChair/Common/State/StateManager.cs) - A very simple state machine, using `StateManager.Set(state)`. Use this for trigger condition of a tutorial, or filter the check for particular states for minimizing the check performance.
+- **GameSave/GameSpark** - When player uninstall the game and reinstall, game progress is restored from iOS Game Center / Google Play Game / GameSpark / you own server. Howwever, the tutorial progress is saved as PlayerPrefs and cannot be restored. One way to replace all PlayerPrefs save to online save, or another simply way to restore it is using `IsCompletedForReturnPlayer()` in TutorialValidator, simple return true if some condition met. For example, skip first tutorial if player's already level 2. `IsCompletedForReturnPlayer()` could be same to `IsValidated()` in most cases but not neccessary.
 
 ## TODO
 - A detailed documentation for how to setup and configure settings, plus a guide on how to put custom scripts for tutorials.
