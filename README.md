@@ -2,15 +2,15 @@
 
 ## About
 A tutorial manager system used in Unity3D games, with the aim to be used across all different games withou coding or with minimal coding. This is been used in [No Humanity](http://www.sweatychair.com/no-humanity), [3DTD: Chicka Invasion](http://www.sweatychair.com/3dtd) and [Friends Must Dungeon](http://www.sweatychair.com/friends-must-dungeon).
-![SweatyChair Tutorial Manager screenshot](Documents/01_tutorial_manager_screenshot.png)
+![Tutorial Manager Screenshot](Documents/01_tutorial_manager.png)
 
-## Script Overview
+## Scripts Overview
 The tutorial system mainly consists 5 core scripts::
 - [TutorialManager](Assets/SweatyChair/Tutorials/Scripts/TutorialManager.cs): A persistent instance that appears in all scenes, used to create and configure tutorials in Editor.
 - [TutorialValidator](Assets/SweatyChair/Tutorials/Scripts/TutorialValidator.cs): A base class that check if the conditions are satisfied to execute a tutorial. Customized validator  should be inherited from this class and implement its own logics. Each tutorial should have 1 or none (if manually trigger) TutorialValidator. All validators are check once per second, avoid putting too complianted login in `IsValidated()` for performance.
 - [TutorialStep](Assets/SweatyChair/Tutorials/Scripts/TutorialStep.cs): A controller to keep track of each step of a tutorial. Each tutorial must have at least 1 step.
 - [TutorialTask](Assets/SweatyChair/Tutorials/Scripts/TutorialTask.cs): A base class to tell what a tutorial task should do. Each tutorial step has 1 or more tasks (in most case 1 step has 1 task). For example, a tutorial step can have 2 tasks: instantiate a button, and go to next step if the button is clicked. Children task classes include show a text on screen, ask to click a button, spawn a GameObject in game, etc. Customized task should be inherited from this class and implement its own logics.
-- [TutorialPanel](Assets/SweatyChair/Tutorials/Scripts/TutorialPanel.cs): An UI panel to show tutorial text, character, etc. This is only Unity UI compatiable and should be on the topest sorting order. I
+- [TutorialPanel](Assets/SweatyChair/Tutorials/Scripts/TutorialPanel.cs): An UI panel to show tutorial text, character, etc. This is only Unity UI compatiable and should be on the topest sorting order.
 
 ## Settings
 Settings of each tutorial:
@@ -30,10 +30,26 @@ Global settings of tutorial manager:
 - Skip Checking State: If validator is used, it checks the condition every seconds. You can limit the state here to skip checking at some states.
 - Debug Mode: Turning on a rich logging mode for debug.
 
+## Prefabs and Steps
+![Tutorial Prefab Screenshot](Documents/02_tutorial_prefab.png)
+A tutorial prefab contains a number of children GameObject, each child is correspond to a tutorial step. The first child should be active and the reset should be inactive, because the each tutorial step simply execute its logic on `Start()`.
+![Tutorial Prefab Screenshot](Documents/03_tutorial_steps.png)
+Each tutorial step GameObject should contains **ONE** TutorialStep, plus 1 or more TutorialTask. E.g. a step can have two tasks: instantiate an ememy and show a tutorial hand on top of it. A step is considered to be completed only when all tasks completed.
+You can also attach your custom script into the step GameObject for you own need. E.g. script just to open coin shop at `OnEnable()`.
+TutorialStep settings:
+- Next Step: Reference to next TutorialStep. The next step will be trigger once this step completed. If no next step set, then this step is the last step, completing it will completing the tutorial.
+- Scene Name: When set, only executes this step if current scene matched, otherwise this step is skipped and proceed to the next. Leaving empty will ignore this check.
+TutorialTask shared  settings:
+- Skip State: Skip execute this task and set as completed, if the state match.
+- Complete State: When to set this task as completed. Some tasks don't allow this to be mannually set.
+- Timeout Seconds: A timeout to force the task to be completed, leaving 0 as no timeout.
+- Min Enabled Seconds: A minimum time for this task to remain active. This is used for avoding UI flickering on some tasks that can be completed instantly.
+- Do Not Reset Panel On Complete: By default, the tutorial panel resets (hides) after each task completed, this may casues an UI flicker when the next step show it again. Turn this on to avoid this happening.
+
 ## Demo
 A demo scene is located at [Demo](Assets/SweatyChair/Tutorials/Demo/) folder, open the [Demo.unity](Assets/SweatyChair/Tutorials/Demo/Demo.unity) scene and you can see how TutorialManager instance containing a tutorial.
 The tutorial has validator call DemoTutorialValidator which always return true in `IsValidated()` and executing the tutorial. You should fill in the logic on how to trigger tutorial here, such as after players playing 15 games.
-A [DemoTutorial.prefab](Assets/SweatyChair/Tutorials/Demo/DemoTutorial.prefab) contains a number of TutorialSteps as children. You can add custom scripts to the step here, e.g. script just to open coin shop on tutorial 2 step 3.
+A [DemoTutorial.prefab](Assets/SweatyChair/Tutorials/Demo/DemoTutorial.prefab) contains a number of TutorialSteps as children.
 
 ## Using with other SW plugins
 - GameSave/GameSpark - Check the previous progress of a returning player and skip tutorials if needed. Each TutorialValidator should override `IsCompletedForReturnPlayer()` to determine should that tutorial be skipped (set completed) for the returning player. For example, skip first tutorial if player's already level 2. `IsCompletedForReturnPlayer()` could be same to `IsValidated()` in most cases but not neccessary.
