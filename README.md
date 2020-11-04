@@ -1,9 +1,9 @@
-![Block42](http://assets.sweatychair.com/images/sweaty-chair/logo_sweaty_chair_square_120.png)
+![Sweaty Chair logo](https://static.sweatychair.com/images/sweaty-chair/logo_sweaty_chair_square_120.png)
 
 # SweatyChair Tutorial Manager
 
 ## About
-A tutorial manager system used in Unity3D games, with the aim to be used across all different games withou coding or with minimal coding. This is been used in [No Humanity](http://www.sweatychair.com/no-humanity), [3DTD: Chicka Invasion](http://www.sweatychair.com/3dtd) and [Friends Must Dungeon](http://www.sweatychair.com/friends-must-dungeon).
+A tutorial manager system used in Unity3D games, with the aim to be used across all different games withou coding or with minimal coding. This is been used in [No Humanity](https://www.sweatychair.com/no-humanity), [3DTD: Chicka Invasion](https://www.sweatychair.com/3dtd) and [Friends Must Dungeon](https://www.sweatychair.com/friends-must-dungeon).
 
 ## Scripts Overview
 The tutorial system mainly consists of 5 core scripts:
