@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace SweatyChair
 {
@@ -10,7 +9,7 @@ namespace SweatyChair
 	public class DemoTutorialValidator : TutorialValidator
 	{
 
-        public virtual bool IsValidated()
+        public override bool IsValidated()
         {
             // If true, execute the tutorial, put logic here such as player reach level 2
             return true;

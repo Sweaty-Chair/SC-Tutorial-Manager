@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace SweatyChair
 {
-	
-	// This assistant workds like TutorialHighlight, plus animate the higlighted UI object
-    public class TutorialAnimateTask : TutorialHighlightTask
+
+	/// <summary>
+	/// Works like TutorialHighlight, plus animate the higlighted UI object.
+	/// </summary>
+	public class TutorialAnimateTask : TutorialHighlightTask
 	{
 
 		public AnimationClip animationClip;

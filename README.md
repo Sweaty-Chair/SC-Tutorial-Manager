@@ -1,9 +1,22 @@
-![Sweaty Chair logo](https://static.sweatychair.com/images/sweaty-chair/logo_sweaty_chair_square_120.png)
-
 # SweatyChair Tutorial Manager
+[![Build status](https://ci.appveyor.com/api/projects/status/github/Sweaty-Chair/SC-Essentials?branch=master&svg=true)](https://ci.appveyor.com/project/Sweaty-Chair/SC-Essentials/branch/master)
+[![Join the chat](https://img.shields.io/badge/discord-join-7289DA.svg?logo=discord&longCache=true&style=flat)](https://discord.gg/qwqeBtS)
 
-## About
-A tutorial manager system used in Unity3D games, with the aim to be used across all different games withou coding or with minimal coding. This is been used in [No Humanity](https://www.sweatychair.com/no-humanity), [3DTD: Chicka Invasion](https://www.sweatychair.com/3dtd) and [Friends Must Dungeon](https://www.sweatychair.com/friends-must-dungeon).
+> A tutorial manager system used in Unity3D games, with the aim to be used across all different games withou coding or with minimal coding. This is been used in [No Humanity](https://www.sweatychair.com/no-humanity), [3DTD: Chicka Invasion](https://www.sweatychair.com/3dtd) and [Friends Must Dungeon](https://www.sweatychair.com/friends-must-dungeon).
+
+> We tried a couple of tutorial tolutions in Asset Store, none of them can satisfy our needs, so we decided to create our own which should be easy enough to plug into any projects and ready to be used.
+
+## Table of Contents
+- [Installation](#installation)
+- [Scripts Overview](#scripts-overview)
+- [Configuration](#configuration)
+- [Usage](#usage)
+    - [Demo](#demo)
+    - [Demo](#demo)
+- [License](#license)
+
+## Installation
+Import this package into Unity, you will also need [SC-Essentials](https://github.com/Sweaty-Chair/SC-Essentials) package for the shared scripts.
 
 ## Scripts Overview
 The tutorial system mainly consists of 5 core scripts:
@@ -13,7 +26,7 @@ The tutorial system mainly consists of 5 core scripts:
 - [**TutorialTask**](Assets/SweatyChair/Tutorials/Scripts/TutorialTask.cs): A base class to tell what a tutorial task should do. Each tutorial step has 1 or more tasks (in most case 1 step has 1 task). For example, a tutorial step can have 2 tasks: instantiate a button, and go to next step if the button is clicked. Children task classes include show a text on screen, ask to click a button, spawn a GameObject in game, etc. Customized task should be inherited from this class and implement its own logics.
 - [**TutorialPanel**](Assets/SweatyChair/Tutorials/Scripts/TutorialPanel.cs): An UI panel to show tutorial text, character, etc. This is only Unity UI compatiable and should be on the topest sorting order.
 
-## Settings
+## Configuration
 ![Tutorial Manager Screenshot](Documents/01_tutorial_manager.png)
 Settings of each tutorial:
 - **ID**: An ID to save the progress in PlayerPrefs. When the game is released, always add tutorial to the end (largest ID), so the progress of each tutorial won't be messed up.
@@ -32,7 +45,7 @@ Global settings of tutorial manager:
 - Skip Checking State: If validator is used, it checks the condition every seconds. You can limit the state here to skip checking at some states.
 - Debug Mode: Turning on a rich logging mode for debug.
 
-## Prefabs and Steps
+## Usage
 ![Tutorial Prefab Screenshot](Documents/02_tutorial_prefab.png)
 
 A tutorial prefab contains a number of children GameObject, each child is correspond to a tutorial step. The first child should be active and the reset should be inactive, because the each tutorial step simply execute its logic on `Start()`.
@@ -51,16 +64,15 @@ TutorialTask shared  settings:
 - **Min Enabled Seconds**: A minimum time for this task to remain active. This is used for avoding UI flickering on some tasks that can be completed instantly.
 - **Do Not Reset Panel On Complete**: By default, the tutorial panel resets (hides) after each task completed, this may casues an UI flicker when the next step show it again. Turn this on to avoid this happening.
 
-## Demo
+### Demo
 A demo scene is located at [Demo](Assets/SweatyChair/Tutorials/Demo/) folder, open the [Demo.unity](Assets/SweatyChair/Tutorials/Demo/Demo.unity) scene and you can see how TutorialManager instance containing a tutorial.
 The tutorial has validator call DemoTutorialValidator which always return true in `IsValidated()` and executing the tutorial. You should fill in the logic on how to trigger tutorial here, such as after players playing 15 games.
 A [DemoTutorial.prefab](Assets/SweatyChair/Tutorials/Demo/DemoTutorial.prefab) contains a number of TutorialSteps as children.
-
-## Using With Other plugins
-- [**StateManager**](Assets/SweatyChair/Common/State/StateManager.cs) - A very simple state machine, using `StateManager.Set(state)`. Use this for limiting the trigger condition of a tutorial, or filtering checks for particular states for minimizing the check performance.
-- **GameSave/GameSpark** - When player uninstall the game and reinstall, game progress is restored from iOS Game Center / Google Play Game / GameSpark / you own server. Howwever, the tutorial progress is saved as PlayerPrefs and cannot be restored. One way to replace all PlayerPrefs save to online save, or another simply way to restore it is using `IsCompletedForReturnPlayer()` in TutorialValidator, simple return true if some condition met. For example, skip first tutorial if player's already level 2. `IsCompletedForReturnPlayer()` could be same to `IsValidated()` in most cases but not neccessary.
 
 ## TODO
 - A detailed documentation for how to setup and configure settings, plus a guide on how to put custom scripts for tutorials.
 - Another demo scene for drag and double drag (two fingers pan) tutorials.
 - Merge the tutorial prefab into TutorialManager editor, so that each step can be created and updated in TutorialManager editor screen, instead of doing them in a prefab now.
+
+## License
+SC Essentials is licensed under a [MIT License](https://github.com/Sweaty-Chair/SC-Tutorial-Manager/blob/master/LICENSE).

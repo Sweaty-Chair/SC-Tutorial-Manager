@@ -1,14 +1,12 @@
-﻿/// <summary>
-/// Tutorial on teaching drag with TWO fingers.
-/// </summary>
-
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 
 namespace SweatyChair
 {
-	
-    public class TutorialDragDoubleTask : TutorialDragTask
+
+	/// <summary>
+	/// Tutorial task on teaching drag with TWO fingers.
+	/// </summary>
+	public class TutorialDragDoubleTask : TutorialDragTask
 	{
 
 		public override bool DoStart()

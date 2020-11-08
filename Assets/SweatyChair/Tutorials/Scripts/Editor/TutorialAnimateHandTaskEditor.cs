@@ -1,27 +1,30 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
-using SweatyChair;
 
-[CustomEditor(typeof(TutorialAnimateHandTask))]
-public class TutorialAnimateHandTaskEditor : TutorialShowPanelTaskEditor
+namespace SweatyChair
 {
-    private TutorialAnimateHandTask _taht
-    {
-        get { return target as TutorialAnimateHandTask; }
-    }
 
-    protected override void OnPreviewSettingGUI()
-    {
-        string handAnim = EditorGUILayout.TextField("Hand animation to use", _taht.handAnim);
-        if (handAnim != _taht.handAnim)
-        {
-            Undo.RegisterCompleteObjectUndo(_taht, "Reassign Hand Anim");
-            _taht.handAnim = handAnim;
-        }
+	[CustomEditor(typeof(TutorialAnimateHandTask))]
+	public class TutorialAnimateHandTaskEditor : TutorialShowPanelTaskEditor
+	{
+		private TutorialAnimateHandTask _taht {
+			get { return target as TutorialAnimateHandTask; }
+		}
 
-        EditorGUI.indentLevel++;
+		protected override void OnPreviewSettingGUI()
+		{
+			string handAnim = EditorGUILayout.TextField("Hand animation to use", _taht.handAnim);
+			if (handAnim != _taht.handAnim) {
+				EditorUtility.SetDirty(_taht);
+				Undo.RegisterCompleteObjectUndo(_taht, "Reassign Hand Anim");
+				_taht.handAnim = handAnim;
+			}
 
-        base.OnPreviewSettingGUI();
-    }
+			EditorGUI.indentLevel++;
+
+			base.OnPreviewSettingGUI();
+		}
+	}
+
 }

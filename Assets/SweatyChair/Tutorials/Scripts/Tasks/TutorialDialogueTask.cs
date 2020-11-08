@@ -2,6 +2,7 @@
 using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
+using SweatyChair.UI;
 
 namespace SweatyChair
 {
@@ -19,11 +20,11 @@ namespace SweatyChair
 			public string animNameToPlay;
 		}
 
-		public static event UnityAction<string> dialogueEvent;
+		public static event UnityAction<string> dialogueShown;
 
 		[SerializeField] private List<Dialogue> _dialogueList = new List<Dialogue>();
 
-		public bool doNotResetPanelOnComplete = false;
+		public bool doNotHidePanelOnComplete = false;
 		// Value of 0 and below will not autoclose the dialogue
 		[SerializeField] private float _autoCloseDelay = 0;
 
@@ -61,8 +62,7 @@ namespace SweatyChair
 			_tutorialPanel.ToggleBackgroundMask(true);
 			_tutorialPanel.ToggleCharacter(true, dialogue.text, dialogue.animNameToPlay);
 
-			if (dialogueEvent != null)
-				dialogueEvent(dialogue.text);
+			dialogueShown?.Invoke(dialogue.text);
 
 			if (_autoCloseDelay > 0 && _textIndex >= dialogueLength - 1) {
 				if (_autoCloseIEnumerator != null)
@@ -85,17 +85,26 @@ namespace SweatyChair
                 return false;
 
             ShowNextText();
+			_lastClickTime = Time.unscaledTime; // For timeout checking
 
-            return true;
+			return true;
         }
 
         protected override void DoUpdate()
 		{
 			if (Input.GetMouseButtonDown(0)) {
 				if (Time.unscaledTime < _lastClickTime + minEnabledSeconds) // Avoid clicking too fast
-				return;
+					return;
 				_lastClickTime = Time.unscaledTime;
 				ShowNextText();
+			}
+			// Check time-out
+			if (timeoutSeconds > 0) {
+				float timoutSecondsPerDialogue = timeoutSeconds / _dialogueList.Count;
+				if (Time.unscaledTime > _lastClickTime + timoutSecondsPerDialogue) {
+					_lastClickTime = Time.unscaledTime;
+					ShowNextText();
+				}
 			}
 		}
 
@@ -110,7 +119,7 @@ namespace SweatyChair
 			if (_tutorialPanel == null)
 				return;
 			_tutorialPanel.ToggleCharacter(false);
-			if (!doNotResetPanelOnComplete) {
+			if (!doNotHidePanelOnComplete) {
 				_tutorialPanel.Reset();
 				_tutorialPanel.Hide();
 			}

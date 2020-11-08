@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace SweatyChair
 {
-	
+
+	/// <summary>
+	/// A tutorial task to instantiate a prefab.
+	/// </summary>
     public class TutorialInstantiateTask : TutorialTask
 	{
 

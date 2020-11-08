@@ -1,14 +1,14 @@
-﻿using UnityEngine;
-using UnityEditor;
-using System.Collections;
-using SweatyChair;
+﻿using UnityEditor;
 
-[CustomEditor(typeof(TutorialClickButtonTask))]
-public class TutorialClickButtonTaskEditor : TutorialHighlightTaskEditor
+namespace SweatyChair
 {
 
-    private TutorialClickButtonTask _tcbt {
-		get { return target as TutorialClickButtonTask; }
+	[CustomEditor(typeof(TutorialClickButtonTask))]
+	public class TutorialClickButtonTaskEditor : TutorialHighlightTaskEditor
+	{
+
+		private TutorialClickButtonTask _tcbt => target as TutorialClickButtonTask;
+
 	}
 
 }

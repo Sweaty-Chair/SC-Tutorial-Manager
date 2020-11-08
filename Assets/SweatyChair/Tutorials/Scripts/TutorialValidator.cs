@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace SweatyChair
 {
-	
+
+	/// <summary>
+	/// A base class for check if an tutorial can start.
+	/// Override this for differnt condition and things to do in a tutorial.
+	/// </summary>
 	public abstract class TutorialValidator : MonoBehaviour
 	{
 		// Check the tutorial can start now

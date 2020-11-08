@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
+using SweatyChair.StateManagement;
 
 namespace SweatyChair
 {
@@ -21,7 +22,7 @@ namespace SweatyChair
     public class TutorialTask : MonoBehaviour
     {
 
-        public event UnityAction completedEvent, failedEvent;
+        public event UnityAction completed, failed;
 
         public State skipState;
 
@@ -29,22 +30,25 @@ namespace SweatyChair
         public TutoriaCompletelTrigger completeTrigger;
 
         // Force complete wait seconds
-        public float timeoutSeconds = 0f;
-        // Minimum seconds before the tutorial can be completed, to avoid flicker
-        public float minEnabledSeconds = 0f;
+        public float timeoutSeconds;
+        // Complete the whole tutorial if this task timeout
+        public bool completeTutorialIfTimeout;
 
-        protected bool isStarted = false;
-        protected bool isCompleted = false;
+        // Minimum seconds before the tutorial can be completed, to avoid flicker
+        public float minEnabledSeconds;
+
+        protected bool isStarted;
+        protected bool isCompleted;
         protected float startedTime;
 
-        void Start()
+        private void Start()
         {
             if (!Init()) {
                 DoFail();
                 return;
             }
             DoStart();
-            if (skipState != State.None && StateManager.Compare(skipState) || completeTrigger == TutoriaCompletelTrigger.OnStart)
+			if (skipState != State.None && StateManager.Compare(skipState) || completeTrigger == TutoriaCompletelTrigger.OnStart)
                 DoComplete();
         }
 
@@ -60,15 +64,13 @@ namespace SweatyChair
 
         private void OnComplete()
         {
-            if (completedEvent != null)
-                completedEvent();
-        }
+			completed?.Invoke();
+		}
 
         private void OnFail()
         {
-            if (failedEvent != null)
-                failedEvent();
-        }
+			failed?.Invoke();
+		}
 
         #endregion
 
@@ -119,6 +121,8 @@ namespace SweatyChair
         {
             yield return new WaitForSecondsRealtime(timeoutSeconds);
             DoComplete();
+            if (completeTutorialIfTimeout)
+                TutorialManager.CompleteCurrentTutorial();
         }
 
         protected IEnumerator WaitMinEnabledSecondsAndCompleteCoroutine()

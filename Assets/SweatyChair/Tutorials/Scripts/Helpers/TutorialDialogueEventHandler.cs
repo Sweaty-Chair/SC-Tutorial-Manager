@@ -31,12 +31,12 @@ namespace SweatyChair
 
 		private void Awake()
 		{
-			TutorialDialogueTask.dialogueEvent += DialogueCheck;
+			TutorialDialogueTask.dialogueShown += DialogueCheck;
 		}
 
 		private void OnDestroy()
 		{
-            TutorialDialogueTask.dialogueEvent -= DialogueCheck;
+            TutorialDialogueTask.dialogueShown -= DialogueCheck;
 		}
 
 		private void DialogueCheck(string dialogue)

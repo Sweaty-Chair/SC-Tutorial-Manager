@@ -1,14 +1,12 @@
-﻿/// <summary>
-/// Tutorial on teaching pinch (mostly for zooming).
-/// </summary>
-
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 
 namespace SweatyChair
 {
-	
-    public class TutorialPinchTask : TutorialShowPanelTask
+
+	/// <summary>
+	/// Tutorial on teaching pinch (mostly for zooming).
+	/// </summary>
+	public class TutorialPinchTask : TutorialShowPanelTask
 	{
 
 		public enum PinchAction

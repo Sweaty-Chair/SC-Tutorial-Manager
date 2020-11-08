@@ -1,148 +1,164 @@
-﻿using SweatyChair;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
+using SweatyChair.StateManagement;
 
-[CustomEditor(typeof(TutorialTask))]
-public class TutorialTaskEditor : Editor
+namespace SweatyChair
 {
 
-    private TutorialTask _tt {
-        get { return target as TutorialTask; }
-    }
+	[CustomEditor(typeof(TutorialTask))]
+	public class TutorialTaskEditor : Editor
+	{
 
-    private bool hasPreviewSection {
-        get {
-            if (!GetType().IsSubclassOf(typeof(TutorialTaskEditor)))
-                return false;
-            var mi = GetType().GetMethod("OnPreviewSettingGUI");
-            return mi == null || mi.DeclaringType == GetType();
-        }
-    }
+		private TutorialTask _tt => target as TutorialTask;
 
-    private bool hasOtherSettingSection {
-        get {
-            if (!GetType().IsSubclassOf(typeof(TutorialTaskEditor)))
-                return false;
-            var mi = GetType().GetMethod("OnOtherSettingGUI");
-            return mi == null || mi.DeclaringType == GetType();
-        }
-    }
+		private bool hasPreviewSection {
+			get {
+				if (!GetType().IsSubclassOf(typeof(TutorialTaskEditor)))
+					return false;
+				var mi = GetType().GetMethod("OnPreviewSettingGUI");
+				return mi == null || mi.DeclaringType == GetType();
+			}
+		}
 
-    public override void OnInspectorGUI()
-    {
-        OnTriggerSettingGUI();
+		private bool hasOtherSettingSection {
+			get {
+				if (!GetType().IsSubclassOf(typeof(TutorialTaskEditor)))
+					return false;
+				var mi = GetType().GetMethod("OnOtherSettingGUI");
+				return mi == null || mi.DeclaringType == GetType();
+			}
+		}
 
-        if (hasPreviewSection) {
-            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-            OnPreviewSettingGUI();
-            OnPreviewGUI();
-        }
+		public override void OnInspectorGUI()
+		{
+			OnTriggerSettingGUI();
 
-        if (hasOtherSettingSection) {
-            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-            OnOtherSettingGUI();
-        }
+			if (hasPreviewSection) {
+				EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+				OnPreviewSettingGUI();
+				OnPreviewGUI();
+			}
 
-        serializedObject.Update();
-    }
+			if (hasOtherSettingSection) {
+				EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+				OnOtherSettingGUI();
+			}
 
-    #region Settings
+			serializedObject.Update();
+		}
 
-    protected virtual bool isCompletedTriggerEditable { get { return true; } }
+		#region Settings
 
-    protected virtual TutoriaCompletelTrigger forceCompleteTrigger { get { return TutoriaCompletelTrigger.Auto; } }
+		protected virtual bool isCompletedTriggerEditable => true;
 
-    protected void OnTriggerSettingGUI()
-    {
-        State skipState = (State)EditorGUILayout.EnumPopup(new GUIContent("Skip State", "Skip this step for specfic states"), _tt.skipState);
-        if (skipState != _tt.skipState) {
-            Undo.RegisterCompleteObjectUndo(_tt, "Reassign skip state");
-            _tt.skipState = skipState;
-        }
+		protected virtual TutoriaCompletelTrigger forceCompleteTrigger => TutoriaCompletelTrigger.Auto;
 
-        if (isCompletedTriggerEditable) {
-            TutoriaCompletelTrigger completeTrigger = (TutoriaCompletelTrigger)EditorGUILayout.EnumPopup(new GUIContent("Complete Trigger", "How this be triggered to complete"), _tt.completeTrigger);
-            if (completeTrigger != _tt.completeTrigger) {
-                Undo.RegisterCompleteObjectUndo(_tt, "Reassign complete trigger");
-                _tt.completeTrigger = completeTrigger;
-            }
-        } else {
-            EditorGUI.BeginDisabledGroup(true);
-            EditorGUILayout.EnumPopup(new GUIContent("Complete Trigger", string.Format("How this be triggered to complete, not editable for {0}.", target.GetType())), _tt.completeTrigger);
-            _tt.completeTrigger = forceCompleteTrigger;
-            EditorGUI.EndDisabledGroup();
-        }
+		protected void OnTriggerSettingGUI()
+		{
+			State skipState = (State)EditorGUILayout.EnumPopup(new GUIContent("Skip State", "Skip this task for specfic states"), _tt.skipState);
+			if (skipState != _tt.skipState) {
+				EditorUtility.SetDirty(_tt);
+				Undo.RegisterCompleteObjectUndo(_tt, "Reassign skip state");
+				_tt.skipState = skipState;
+			}
 
-        float timeoutSeconds = EditorGUILayout.FloatField(new GUIContent("Timeout Seconds", "A timeout seconds to force complete this step, if complete trigger is not fired."), _tt.timeoutSeconds);
-        if (timeoutSeconds != _tt.timeoutSeconds) {
-            Undo.RegisterCompleteObjectUndo(_tt, "Reassign Timeout Seconds");
-            _tt.timeoutSeconds = timeoutSeconds;
-        }
+			if (isCompletedTriggerEditable) {
+				TutoriaCompletelTrigger completeTrigger = (TutoriaCompletelTrigger)EditorGUILayout.EnumPopup(new GUIContent("Complete Trigger", "How this be triggered to complete"), _tt.completeTrigger);
+				if (completeTrigger != _tt.completeTrigger) {
+					EditorUtility.SetDirty(_tt);
+					Undo.RegisterCompleteObjectUndo(_tt, "Reassign complete trigger");
+					_tt.completeTrigger = completeTrigger;
+				}
+			} else {
+				EditorGUI.BeginDisabledGroup(true);
+				EditorGUILayout.EnumPopup(new GUIContent("Complete Trigger", string.Format("How this be triggered to complete, not editable for {0}.", target.GetType())), _tt.completeTrigger);
+				_tt.completeTrigger = forceCompleteTrigger;
+				EditorGUI.EndDisabledGroup();
+			}
 
-        float minEnabledSeconds = EditorGUILayout.FloatField(new GUIContent("Min Enabled Seconds", "A minimum seconds between start and complete, use this to avoid flicker."), _tt.minEnabledSeconds);
-        if (minEnabledSeconds != _tt.minEnabledSeconds) {
-            Undo.RegisterCompleteObjectUndo(_tt, "Reassign Min Enabled Seconds");
-            _tt.minEnabledSeconds = minEnabledSeconds;
-        }
-    }
+			float timeoutSeconds = EditorGUILayout.FloatField(new GUIContent("Timeout Seconds", "A timeout seconds to force complete this step, if complete trigger is not fired."), _tt.timeoutSeconds);
+			if (timeoutSeconds != _tt.timeoutSeconds) {
+				EditorUtility.SetDirty(_tt);
+				Undo.RegisterCompleteObjectUndo(_tt, "Reassign Timeout Seconds");
+				_tt.timeoutSeconds = timeoutSeconds;
+			}
 
-    protected virtual void OnPreviewSettingGUI()
-    {
-    }
+			if (_tt.timeoutSeconds > 0) {
+				bool completeTutorialIfTimeout = EditorGUILayout.Toggle(new GUIContent("Complete Tutorial If Timeout", "Complete the whole tutorial if this step timeout."), _tt.completeTutorialIfTimeout);
+				if (completeTutorialIfTimeout != _tt.completeTutorialIfTimeout) {
+					EditorUtility.SetDirty(_tt);
+					Undo.RegisterCompleteObjectUndo(_tt, "Reassign Complete Tutorial If Timeout");
+					_tt.completeTutorialIfTimeout = completeTutorialIfTimeout;
+				}
+			}
 
-    protected virtual void OnOtherSettingGUI()
-    {
-    }
+			float minEnabledSeconds = EditorGUILayout.FloatField(new GUIContent("Min Enabled Seconds", "A minimum seconds between start and complete, use this to avoid flicker."), _tt.minEnabledSeconds);
+			if (minEnabledSeconds != _tt.minEnabledSeconds) {
+				EditorUtility.SetDirty(_tt);
+				Undo.RegisterCompleteObjectUndo(_tt, "Reassign Min Enabled Seconds");
+				_tt.minEnabledSeconds = minEnabledSeconds;
+			}
+		}
 
-    #endregion
+		protected virtual void OnPreviewSettingGUI()
+		{
+		}
 
-    #region Preview
+		protected virtual void OnOtherSettingGUI()
+		{
+		}
 
-    protected virtual bool isPreviewShown {
-        get { return false; }
-    }
+		#endregion
 
-    protected virtual bool canShowPreview {
-        get { return true; }
-    }
+		#region Preview
 
-    protected virtual string cannotShowPreviewWarning {
-        get { return string.Empty; }
-    }
+		protected virtual bool isPreviewShown {
+			get { return false; }
+		}
 
-    protected virtual void OnPreviewGUI()
-    {
-        if (isPreviewShown) {
-            GUI.backgroundColor = Color.red;
-            if (GUILayout.Button("Remove Preview"))
-                OnRemovePreviewClick();
-            GUI.backgroundColor = Color.white;
-        } else {
-            if (canShowPreview) {
-                GUI.backgroundColor = Color.green;
-                if (GUILayout.Button("Preview"))
-                    OnAddPreviewClick();
-                GUI.backgroundColor = Color.white;
-            } else {
-                GUI.contentColor = Color.red;
-                GUILayout.Label(cannotShowPreviewWarning);
-                GUI.contentColor = Color.white;
-            }
-        }
-    }
+		protected virtual bool canShowPreview {
+			get { return true; }
+		}
 
-    protected virtual void OnRemovePreviewClick()
-    {
-    }
+		protected virtual string cannotShowPreviewWarning {
+			get { return string.Empty; }
+		}
 
-    protected virtual void OnAddPreviewClick()
-    {
-    }
+		protected virtual void OnPreviewGUI()
+		{
+			if (isPreviewShown) {
+				GUI.backgroundColor = Color.red;
+				if (GUILayout.Button("Remove Preview"))
+					OnRemovePreviewClick();
+				GUI.backgroundColor = Color.white;
+			} else {
+				if (canShowPreview) {
+					GUI.backgroundColor = Color.green;
+					if (GUILayout.Button("Preview"))
+						OnAddPreviewClick();
+					GUI.backgroundColor = Color.white;
+				} else {
+					GUI.contentColor = Color.red;
+					GUILayout.Label(cannotShowPreviewWarning);
+					GUI.contentColor = Color.white;
+				}
+			}
+		}
 
-    protected virtual void UpdatePreview()
-    {
-    }
+		protected virtual void OnRemovePreviewClick()
+		{
+		}
 
-    #endregion
+		protected virtual void OnAddPreviewClick()
+		{
+		}
+
+		protected virtual void UpdatePreview()
+		{
+		}
+
+		#endregion
+
+	}
 
 }

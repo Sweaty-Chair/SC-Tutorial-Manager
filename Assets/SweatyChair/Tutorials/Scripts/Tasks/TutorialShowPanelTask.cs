@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections;
+using System.Collections.Generic;
+using SweatyChair.UI;
 
 namespace SweatyChair
 {
-	
+
 	/// <summary>
 	/// Display tutorial panel with hand and text when trigger.
 	/// </summary>
-    public class TutorialShowPanelTask : TutorialTask
+	public class TutorialShowPanelTask : TutorialTask
 	{
 
 		// Hand
@@ -20,6 +23,7 @@ namespace SweatyChair
 		public Vector2 textSize = new Vector2(200, 100);
 		public string text;
 		public Color textColor = Color.black;
+		public int fontSize = 60;
 		public TextAnchor alignment = TextAnchor.MiddleLeft;
 
 		protected bool showText { get { return !string.IsNullOrEmpty(text); } }
@@ -28,10 +32,10 @@ namespace SweatyChair
 		public bool showBackgroundMask = true;
 		public int alpha = 168;
 		public bool clickToComplete = true;
-        public float timeBeforeClickable = 0f;
+		public float timeBeforeClickable = 0f;
 
 		// Other
-		public bool doNotResetPanelOnComplete = false;
+		public bool doNotHidePanelOnComplete = false;
 
 		public TutorialPanel tutorialPanel;
 
@@ -61,7 +65,7 @@ namespace SweatyChair
 		public override void DoComplete()
 		{
 			base.DoComplete();
-			if (!doNotResetPanelOnComplete)
+			if (!doNotHidePanelOnComplete)
 				tutorialPanel.Hide();
 		}
 
@@ -73,7 +77,7 @@ namespace SweatyChair
 				tutorialPanel.SetHandTransform(handLocalPosition, handLocalRotation, handLocalScale);
 			if (showText)
 				tutorialPanel.SetTextTransform(textLocalPosition, textLocalRotation, textSize);
-			tutorialPanel.SetText(text, textColor, alignment);
+			tutorialPanel.SetText(text, textColor, fontSize, alignment);
 
 			SetupBackgroundMask();
 		}
@@ -82,25 +86,23 @@ namespace SweatyChair
 		{
 			tutorialPanel.ToggleBackgroundMask(showBackgroundMask, alpha);
 			if (clickToComplete) {
-                Button backgroundButton = tutorialPanel.GetBackgroundButton();
-                if (backgroundButton != null)
-                {
-                    backgroundButton.onClick.AddListener(DoComplete);
-                    if (timeBeforeClickable != 0)
-                    {
-                        backgroundButton.interactable = false;
-                        IEnumerator setButtonInteractableCoroutine = SetBackgroundButtonInteractableDelayed(backgroundButton, timeBeforeClickable);
-                        StartCoroutine(setButtonInteractableCoroutine);
-                    }
-                }
+				Button backgroundButton = tutorialPanel.GetBackgroundButton();
+				if (backgroundButton != null) {
+					backgroundButton.onClick.AddListener(DoComplete);
+					if (timeBeforeClickable != 0) {
+						backgroundButton.interactable = false;
+						IEnumerator setButtonInteractableCoroutine = SetBackgroundButtonInteractableDelayed(backgroundButton, timeBeforeClickable);
+						StartCoroutine(setButtonInteractableCoroutine);
+					}
+				}
 			}
 		}
 
-        protected IEnumerator SetBackgroundButtonInteractableDelayed(Button button, float delay)
-        {
-            yield return new WaitForSecondsRealtime(delay);
-            button.interactable = true;
-        }
+		protected IEnumerator SetBackgroundButtonInteractableDelayed(Button button, float delay)
+		{
+			yield return new WaitForSecondsRealtime(delay);
+			button.interactable = true;
+		}
 
 		public virtual void ResetBackgroundMask()
 		{
@@ -111,19 +113,17 @@ namespace SweatyChair
 			if (tutorialPanel == null)
 				return;
 			if (clickToComplete) {
-                Button backgroundButton = tutorialPanel.GetBackgroundButton();
-                if (backgroundButton != null)
-                {
-                    backgroundButton.onClick.RemoveListener(DoComplete);
-                    if (timeBeforeClickable != 0)
-                    {
-                        StopAllCoroutines();
-                        backgroundButton.interactable = true;
-                    }
-                }
+				Button backgroundButton = tutorialPanel.GetBackgroundButton();
+				if (backgroundButton != null) {
+					backgroundButton.onClick.RemoveListener(DoComplete);
+					if (timeBeforeClickable != 0) {
+						StopAllCoroutines();
+						backgroundButton.interactable = true;
+					}
+				}
 			}
 			ResetBackgroundMask();
-			if (!doNotResetPanelOnComplete) {
+			if (!doNotHidePanelOnComplete) {
 				tutorialPanel.Reset();
 				tutorialPanel.Hide();
 			}
@@ -131,7 +131,7 @@ namespace SweatyChair
 
 		public void DestroyTutorialPanel()
 		{
-            StopAllCoroutines();
+			StopAllCoroutines();
 			DestroyImmediate(tutorialPanel.gameObject);
 		}
 

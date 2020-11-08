@@ -1,9 +1,9 @@
-﻿/// <summary>
-/// Tutorial to set hand animation manually.
-/// </summary>
-
-namespace SweatyChair
+﻿namespace SweatyChair
 {
+
+    /// <summary>
+    /// Tutorial to set hand animation manually.
+    /// </summary>
     public class TutorialAnimateHandTask : TutorialShowPanelTask
     {
         public string handAnim = "HandClick";

@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace SweatyChair
 {
 
+	/// <summary>
+	/// Activate a game object in current scene.
+	/// </summary>
     public class TutorialActivateTask : TutorialTask
 	{
 

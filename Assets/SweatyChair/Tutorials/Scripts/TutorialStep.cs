@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using SweatyChair.UI;
 
 namespace SweatyChair
 {
-    
+
+    /// <summary>
+	/// A step in a tutorial, a step should contain at least ONE tutorial task.
+	/// </summary>
     public class TutorialStep : MonoBehaviour
     {
 
         // Step count on current tutorial instance, for game analytics
         private static int _stepNumber = 1;
-        public event UnityAction completedEvent;
+        public event UnityAction completed;
 
         [HideInInspector] public TutorialTask[] tasks;
 
@@ -20,33 +24,31 @@ namespace SweatyChair
         private int _assistantCount = 0;
         private int _completedCount = 0;
 
-        public TutorialStep nextStep {
-            get { return _nextStep; }
-        }
+        public TutorialStep nextStep => _nextStep;
 
         public static void ResetStepNumber()
         {
             _stepNumber = 1;
         }
 
-        void Awake()
+        private void Awake()
         {
             tasks = GetComponents<TutorialTask>();
             _assistantCount = tasks.Length;
             foreach (TutorialTask tt in tasks) {
-                tt.completedEvent += OnStepComplete;
-                tt.failedEvent += OnStepFail;
+                tt.completed  += OnStepComplete;
+                tt.failed  += OnStepFail;
             }
         }
 
-        void Start()
+        private void Start()
         {
             TutorialManager.SetCurrentTutorialStep(this);
             if (!string.IsNullOrEmpty(_sceneName) && SceneManager.GetActiveScene().name != _sceneName)
                 SceneManager.LoadScene(_sceneName);
         }
 
-        void Update()
+        private void Update()
         {
             if (Input.GetMouseButtonUp(0))
                 TutorialManager.FireCompleteTrigger(TutoriaCompletelTrigger.OnClick);
@@ -55,7 +57,7 @@ namespace SweatyChair
 
         public void Activate()
         {
-            Debug.LogFormat("{0}/{1}:TutorialStep - tutorial step started", transform.parent.name, transform.name);
+            //Debug.LogFormat("{0}/{1}:TutorialStep - tutorial step started", transform.parent.name, transform.name);
             gameObject.SetActive(true);
         }
 
@@ -91,9 +93,9 @@ namespace SweatyChair
 
         public void Complete()
         {
-            Debug.LogFormat("{0}/{1}:TutorialStep - tutorial step completed", transform.parent.name, transform.name);
+			//Debug.LogFormat("{0}/{1}:TutorialStep - tutorial step completed", transform.parent.name, transform.name);
 
-            foreach (TutorialTask tt in tasks)
+			foreach (TutorialTask tt in tasks)
                 tt.Reset();
 
             if (TutorialManager.currentTutorial != null)
@@ -106,10 +108,9 @@ namespace SweatyChair
                 TutorialPanel.DestroyInstance();
             }
 
-            if (completedEvent != null)
-                completedEvent();
+			completed?.Invoke();
 
-            Destroy(gameObject);
+			Destroy(gameObject);
         }
 
     }

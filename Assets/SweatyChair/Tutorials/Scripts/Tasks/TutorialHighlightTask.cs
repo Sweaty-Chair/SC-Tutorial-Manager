@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using SweatyChair.UI;
+using System.ComponentModel;
 
 namespace SweatyChair
 {
-	
+
 	/// <summary>
 	/// Works like TutorialShowPanel, plus highlight and follow an in-game UI/world object.
 	/// </summary>
-    public class TutorialHighlightTask : TutorialShowPanelTask
+	public class TutorialHighlightTask : TutorialShowPanelTask
 	{
 
 		// Highlight target path in scene
@@ -19,12 +20,14 @@ namespace SweatyChair
 		public bool cloneTarget = true;
 		// Target follow the target clone OnUpdate
 		public bool targetFollowCloneOnUpdate;
-        // Target can catch raycasts
-        public bool targetCanCatchRaycast = true;
-        private bool _cachedRaycastTarget;
+		// Target can catch raycasts
+		public bool targetCanCatchRaycast = true;
 
-        // Hand and text follow the target position
-        public bool handFollowTarget = true, textFollowTarget = true;
+		// By default, put original target to tutorial panel, turn this on if you want the opposite
+		public bool putCloneToTutorialPanelInstead;
+
+		// Hand and text follow the target position
+		public bool handFollowTarget = true, textFollowTarget = true;
 		// Hand and text follow the target position on Update, or OnEnable only as default
 		public bool handFollowOnUpdate = false, textFollowOnUpdate = false;
 		// Disable buttons
@@ -41,12 +44,13 @@ namespace SweatyChair
 		protected Transform targetTF;
 
 		// Disable Colliders array from disableColliderPaths
-		private Button[] _disableButtons = new Button[0];
+		protected Button[] _disableButtons = new Button[0];
 
 		// Cached original and clone parameters
-		private Transform _targetParentTF;
-		private int _targetSiblingIndex;
-		private GameObject _targetCloneGO;
+		protected Transform _targetParentTF;
+		protected int _targetSiblingIndex;
+		protected GameObject _targetCloneGO;
+		protected bool _cachedRaycastTarget;
 
 		public override bool Init()
 		{
@@ -68,7 +72,6 @@ namespace SweatyChair
 					return false;
 				}
 
-
 			}
 
 			_disableButtons = new Button[disableButtonPaths.Length];
@@ -79,21 +82,21 @@ namespace SweatyChair
 				_disableButtons[i] = b;
 			}
 
-            tutorialPanel = TutorialPanel.GetCurrent(targetTF);
-            if (tutorialPanel == null) {
+			tutorialPanel = TutorialPanel.current;
+			if (tutorialPanel == null) {
 				Debug.LogErrorFormat("{0}:{1}:Init - TutorialPanel instance not found, targetPath={2}", name, GetType(), targetPath);
-                return false;
-            }
+				return false;
+			}
 
-            tutorialPanel.Reset(!showBackgroundMask);
+			tutorialPanel.Reset(!showBackgroundMask);
 
-            return true;
+			return true;
 		}
 
 		protected override void DoUpdate()
 		{
 			if (targetFollowCloneOnUpdate)
-				RepositionHandTarget();
+				RepositionTarget();
 			if (showHand && handFollowTarget && handFollowOnUpdate)
 				RepositionHand();
 			if (showText && textFollowTarget && textFollowOnUpdate)
@@ -112,10 +115,14 @@ namespace SweatyChair
 			SetupTarget();
 		}
 
-		private void RepositionHandTarget()
+		private void RepositionTarget()
 		{
-			if (_targetCloneGO != null)
-				targetTF.position = _targetCloneGO.transform.position;
+			if (_targetCloneGO != null) {
+				if (putCloneToTutorialPanelInstead)
+					 _targetCloneGO.transform.position = targetTF.position;
+				else
+					targetTF.position = _targetCloneGO.transform.position;
+			}
 		}
 
 		protected virtual void RepositionHand()
@@ -127,7 +134,7 @@ namespace SweatyChair
 						newHandLocalPosition = GetFollowTargetUIOffset() + handLocalPosition;
 					} else {
 						tutorialPanel.SetHandPosition(GetFollowTargetUIPosition());
-                        newHandLocalPosition = tutorialPanel.GetHandLocalPosition() + handLocalPosition;
+						newHandLocalPosition = tutorialPanel.GetHandLocalPosition() + handLocalPosition;
 					}
 				}
 				tutorialPanel.SetHandTransform(newHandLocalPosition, handLocalRotation, handLocalScale);
@@ -143,7 +150,7 @@ namespace SweatyChair
 						newTextLocalPosition = GetFollowTargetUIOffset() + textLocalPosition;
 					} else {
 						tutorialPanel.SetTextPosition(GetFollowTargetUIPosition());
-                        newTextLocalPosition = tutorialPanel.GetTextLocalPosition() + textLocalPosition;
+						newTextLocalPosition = tutorialPanel.GetTextLocalPosition() + textLocalPosition;
 					}
 				}
 				tutorialPanel.SetTextTransform(newTextLocalPosition, textLocalRotation, textSize);
@@ -162,7 +169,7 @@ namespace SweatyChair
 		private Vector3 GetFollowTargetUIPosition()
 		{
 			Vector3 screenPointUnscaled = Camera.main.WorldToScreenPoint(targetTF.position);
-			Canvas canvas = GameObject.FindObjectOfType<Canvas>();
+			Canvas canvas = FindObjectOfType<Canvas>();
 			return screenPointUnscaled / canvas.scaleFactor;
 		}
 
@@ -174,25 +181,60 @@ namespace SweatyChair
 				RectTransform targetRT = targetTF.GetComponent<RectTransform>();
 				_targetSiblingIndex = targetRT.GetSiblingIndex();
 
-				if (cloneTarget) { // Position the target clone to target's position
-					_targetCloneGO = GameObjectUtils.AddChild(targetTF.parent.gameObject, targetTF.gameObject);
+				if (cloneTarget && _targetCloneGO == null) { // Position the target clone to target's position
+					_targetCloneGO = targetTF.parent.gameObject.AddChild(targetTF.gameObject);
 					RectTransform targetCloneRT = _targetCloneGO.GetComponent<RectTransform>();
-					if (targetCloneRT != null)
+					if (targetCloneRT != null) {
 						targetCloneRT.SetSiblingIndex(_targetSiblingIndex);
+						targetCloneRT.sizeDelta = targetRT.sizeDelta;
+					}
 				}
 
 				// Move target to tutorial panel
 				if (targetRT != null) {
-                    targetTF.SetParent(tutorialPanel.transform, true);
-					targetRT.SetSiblingIndex(1); // Just after background mask
-                    // Set if target should catch raycasts and store original state
-                    Graphic targetGraphic = targetRT.GetComponent<Graphic>();
-                    if (targetGraphic)
-                    {
-                        _cachedRaycastTarget = targetGraphic.raycastTarget;
-                        targetGraphic.raycastTarget = targetCanCatchRaycast;
-                    }
-                }
+					Transform transformToMoveInTutorialPanel = targetTF;
+					if (putCloneToTutorialPanelInstead) {
+						transformToMoveInTutorialPanel = _targetCloneGO.transform;
+						// Add canvas sorting
+						Canvas canvas = transformToMoveInTutorialPanel.GetComponent<Canvas>();
+						if (canvas != null) canvas.sortingOrder += 1000;
+						// Remove TweenOnEnable
+						TweenOnEnable tweenOnEnable = transformToMoveInTutorialPanel.GetComponent<TweenOnEnable>();
+						
+						if (tweenOnEnable != null) {
+							tweenOnEnable.ForceCancelTween();
+							Destroy(tweenOnEnable);
+						}
+					}
+					transformToMoveInTutorialPanel.SetParent(tutorialPanel.transform, true);
+
+					RectTransform rectTransformToMoveInTutorialPanel = transformToMoveInTutorialPanel.GetComponent<RectTransform>();
+					rectTransformToMoveInTutorialPanel.SetSiblingIndex(1); // Just after background mask
+
+					// Set if target should catch raycasts and store original state
+					Graphic graphicToMoveInTutorialPanel = rectTransformToMoveInTutorialPanel.GetComponent<Graphic>();
+					if (graphicToMoveInTutorialPanel != null) {
+						_cachedRaycastTarget = graphicToMoveInTutorialPanel.raycastTarget;
+						graphicToMoveInTutorialPanel.raycastTarget = targetCanCatchRaycast;
+					}
+
+					// Make sure it sets it to the right width.
+					if (cloneTarget && _targetCloneGO != null) { // Position the target clone to target's position	
+						RectTransform subTf = (putCloneToTutorialPanelInstead) ? _targetCloneGO.GetComponent<RectTransform>() : targetTF.GetComponent<RectTransform>();
+						RectTransform coreTf = (putCloneToTutorialPanelInstead) ? targetTF.GetComponent<RectTransform>() : _targetCloneGO.GetComponent<RectTransform>();
+						
+						LayoutGroup parentGroup = coreTf.GetComponentInParent<LayoutGroup>();
+						if(parentGroup != null)
+							LayoutRebuilder.ForceRebuildLayoutImmediate(parentGroup.GetComponent<RectTransform>());
+
+						subTf.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, coreTf.rect.width);
+						subTf.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, coreTf.rect.height);
+
+					}
+
+					// Try copy the data from target to clone
+					_targetCloneGO?.SendMessage("CopyFrom", targetTF.gameObject, SendMessageOptions.DontRequireReceiver);
+				}
 
 			}
 
@@ -212,22 +254,21 @@ namespace SweatyChair
 		{
 			if (doNotResetHighlightedObjectOnComplete)
 				return;
-			
+
 			if (_targetCloneGO != null)
 				GameObjectUtils.Destroy(_targetCloneGO);
-			if (_targetParentTF != null) {
+			if (_targetParentTF != null && !putCloneToTutorialPanelInstead) {
 				targetTF.SetParent(_targetParentTF, true);
 				RectTransform targetRT = targetTF.GetComponent<RectTransform>();
-                if (targetRT != null)
-                {
-                    targetRT.SetSiblingIndex(_targetSiblingIndex);
-                    // Reset target can catch raycast to original state
-                    Graphic targetGraphic = targetRT.GetComponent<Graphic>();
-                    if (targetGraphic)
-                        targetGraphic.raycastTarget = _cachedRaycastTarget;
-                }
-            }
-		
+				if (targetRT != null) {
+					targetRT.SetSiblingIndex(_targetSiblingIndex);
+					// Reset target can catch raycast to original state
+					Graphic targetGraphic = targetRT.GetComponent<Graphic>();
+					if (targetGraphic)
+						targetGraphic.raycastTarget = _cachedRaycastTarget;
+				}
+			}
+
 			foreach (Button b in _disableButtons) {
 				if (b != null)
 					b.interactable = true;

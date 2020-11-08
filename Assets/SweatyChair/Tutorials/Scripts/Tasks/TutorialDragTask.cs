@@ -1,14 +1,12 @@
-﻿/// <summary>
-/// Tutorial on teaching drag with ONE finger, with hightlighting a particular UI object in the scene.
-/// </summary>
-
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 
 namespace SweatyChair
 {
-	
-    public class TutorialDragTask : TutorialHighlightTask
+
+	/// <summary>
+	/// Tutorial task on teaching drag with ONE finger, with hightlighting a particular UI object in the scene.
+	/// </summary>
+	public class TutorialDragTask : TutorialHighlightTask
 	{
 
 		// Constraint direction, can drag toward anywhere if false

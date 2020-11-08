@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 namespace SweatyChair
 {
@@ -11,7 +10,9 @@ namespace SweatyChair
     public class TutorialClickButtonTask : TutorialHighlightTask
 	{
 
-		private Button _targetButton;
+		protected Button _targetButton;
+
+        private bool _isHandAnimationPlaying = false;
 
 		public override bool Init()
 		{
@@ -29,30 +30,37 @@ namespace SweatyChair
 			return true;
 		}
 
-		protected override void SetupBackgroundMask()
+		protected override void SetupTarget()
 		{
-			base.SetupBackgroundMask();
+			base.SetupTarget();
 
-			if (_targetButton != null && _targetButton.interactable)
-				_targetButton.onClick.AddListener(DoComplete);
+			Button addCompletCallbackButton = _targetButton;
+			if (putCloneToTutorialPanelInstead)
+				addCompletCallbackButton = _targetCloneGO?.GetComponent<Button>();
+			if (addCompletCallbackButton != null && addCompletCallbackButton.interactable)
+				addCompletCallbackButton.onClick.AddListener(DoComplete);
 		}
 
-		public override void ResetBackgroundMask()
+		protected override void ResetTarget()
 		{
-			base.ResetBackgroundMask();
+			base.ResetTarget();
 
-			if (!showBackgroundMask)
-				return;
-
-			if (_targetButton != null && _targetButton.interactable)
-				_targetButton.onClick.RemoveListener(DoComplete);
+			Button addCompletCallbackButton = _targetButton;
+			if (putCloneToTutorialPanelInstead)
+				addCompletCallbackButton = _targetCloneGO?.GetComponent<Button>();
+			if (addCompletCallbackButton != null && addCompletCallbackButton.interactable)
+				addCompletCallbackButton.onClick.RemoveListener(DoComplete);
 		}
 
         protected override void RepositionHand()
         {
             base.RepositionHand();
 
-            tutorialPanel.SetHandAnimation("HandClick"); // Make sure hand is playing click animation, e.g. after tutoial drag executed
+            // Avoid animation play callback every frame.
+            if (!_isHandAnimationPlaying) {
+                _isHandAnimationPlaying = true;
+                tutorialPanel.SetHandAnimation("HandClick"); // Make sure hand is playing click animation, e.g. after tutoial drag executed
+            }
         }
     }
 

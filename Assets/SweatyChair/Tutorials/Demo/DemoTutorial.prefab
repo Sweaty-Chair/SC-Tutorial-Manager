@@ -3,9 +3,10 @@
 --- !u!1 &191312
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 491312}
   m_Layer: 0
@@ -17,11 +18,12 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &491312
 Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191312}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -32,26 +34,17 @@ Transform:
   - {fileID: 4336297920416738}
   - {fileID: 4000010469074884}
   - {fileID: 4461676156271754}
+  - {fileID: 7968571956302130052}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 191312}
-  m_IsPrefabParent: 1
 --- !u!1 &1000012680727340
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4000010469074884}
   - component: {fileID: 114000011643280300}
@@ -63,114 +56,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!1 &1272783638576672
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4461676156271754}
-  - component: {fileID: 114508325849437210}
-  - component: {fileID: 114765423891346684}
-  m_Layer: 0
-  m_Name: CharacterDialogue
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!1 &1430672691923122
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4185361222907892}
-  - component: {fileID: 114095351401163590}
-  - component: {fileID: 114011821229842674}
-  m_Layer: 0
-  m_Name: Intro
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1442236466422468
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4307077403005104}
-  - component: {fileID: 114755318228012166}
-  - component: {fileID: 114442900815046514}
-  m_Layer: 0
-  m_Name: ClickFirstButton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!1 &1555638894718096
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4427915913943226}
-  - component: {fileID: 114235720153549566}
-  - component: {fileID: 114686882034882394}
-  m_Layer: 0
-  m_Name: ClickThirdButton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!1 &1985740247564422
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4336297920416738}
-  - component: {fileID: 114348151305167280}
-  - component: {fileID: 114982162915868636}
-  - component: {fileID: 114438309906669102}
-  m_Layer: 0
-  m_Name: ActivateForthButton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!1 &1991480191123972
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4365687801075980}
-  - component: {fileID: 114537475000102750}
-  - component: {fileID: 114309119367733362}
-  m_Layer: 0
-  m_Name: ClickSecondButton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!4 &4000010469074884
 Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000012680727340}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -179,89 +70,12 @@ Transform:
   m_Father: {fileID: 491312}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4185361222907892
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1430672691923122}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 491312}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4307077403005104
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1442236466422468}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 491312}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4336297920416738
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1985740247564422}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 491312}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4365687801075980
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1991480191123972}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 491312}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4427915913943226
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1555638894718096}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 491312}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4461676156271754
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1272783638576672}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 491312}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114000011643280300
 MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000012680727340}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -271,229 +85,12 @@ MonoBehaviour:
   tasks: []
   _nextStep: {fileID: 114508325849437210}
   _sceneName: 
---- !u!114 &114011821229842674
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1430672691923122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27344e11e42f549f281da9800d7ef542, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skipState: 0
-  completeTrigger: 0
-  timeoutSeconds: 0
-  minEnabledSeconds: 0
-  showHand: 0
-  handLocalPosition: {x: 0, y: 0, z: 0}
-  handLocalRotation: {x: 0, y: 0, z: 0}
-  handLocalScale: {x: 1, y: 1, z: 1}
-  textLocalPosition: {x: 0, y: 0, z: 0}
-  textLocalRotation: {x: 0, y: 0, z: 0}
-  textSize: {x: 300, y: 100}
-  text: This is a demo tutorial.
-  textColor: {r: 1, g: 1, b: 1, a: 1}
-  alignment: 4
-  showBackgroundMask: 1
-  alpha: 168
-  clickToComplete: 1
-  timeBeforeClickable: 0
-  doNotResetPanelOnComplete: 0
-  tutorialPanel: {fileID: 0}
---- !u!114 &114095351401163590
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1430672691923122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9cec2f5b484b42d1808201870ffbaf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tasks: []
-  _nextStep: {fileID: 114755318228012166}
-  _sceneName: 
---- !u!114 &114235720153549566
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1555638894718096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9cec2f5b484b42d1808201870ffbaf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tasks: []
-  _nextStep: {fileID: 114348151305167280}
-  _sceneName: 
---- !u!114 &114309119367733362
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1991480191123972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfa51b3bfec954b5283dc6b3567ed49d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skipState: 0
-  completeTrigger: 0
-  timeoutSeconds: 0
-  minEnabledSeconds: 0
-  showHand: 1
-  handLocalPosition: {x: 40, y: -20, z: 0}
-  handLocalRotation: {x: 0, y: 0, z: 0}
-  handLocalScale: {x: 1, y: 1, z: 1}
-  textLocalPosition: {x: 260, y: -28, z: 0}
-  textLocalRotation: {x: 0, y: 0, z: 0}
-  textSize: {x: 300, y: 200}
-  text: Click Second Button!
-  textColor: {r: 1, g: 1, b: 0, a: 1}
-  alignment: 3
-  showBackgroundMask: 1
-  alpha: 168
-  clickToComplete: 0
-  timeBeforeClickable: 0
-  doNotResetPanelOnComplete: 0
-  tutorialPanel: {fileID: 0}
-  targetPath: Canvas/ButtonsPanel1/btn_1-2
-  skipIfTargetInactive: 0
-  cloneTarget: 1
-  targetFollowCloneOnUpdate: 0
-  targetCanCatchRaycast: 1
-  handFollowTarget: 1
-  textFollowTarget: 1
-  handFollowOnUpdate: 0
-  textFollowOnUpdate: 0
-  disableButtonPaths: []
-  doNotResetHighlightedObjectOnComplete: 0
-  removeHighlightedObjectPanelOnComplete: 0
---- !u!114 &114348151305167280
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1985740247564422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9cec2f5b484b42d1808201870ffbaf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tasks: []
-  _nextStep: {fileID: 114000011643280300}
-  _sceneName: 
---- !u!114 &114438309906669102
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1985740247564422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27344e11e42f549f281da9800d7ef542, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skipState: 0
-  completeTrigger: 0
-  timeoutSeconds: 0
-  minEnabledSeconds: 0
-  showHand: 0
-  handLocalPosition: {x: 0, y: 0, z: 0}
-  handLocalRotation: {x: 0, y: 0, z: 0}
-  handLocalScale: {x: 1, y: 1, z: 1}
-  textLocalPosition: {x: 0, y: 0, z: 0}
-  textLocalRotation: {x: 0, y: 0, z: 0}
-  textSize: {x: 200, y: 100}
-  text: New Button Appears!
-  textColor: {r: 1, g: 1, b: 0, a: 1}
-  alignment: 3
-  showBackgroundMask: 1
-  alpha: 168
-  clickToComplete: 1
-  timeBeforeClickable: 0
-  doNotResetPanelOnComplete: 0
-  tutorialPanel: {fileID: 0}
---- !u!114 &114442900815046514
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1442236466422468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfa51b3bfec954b5283dc6b3567ed49d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skipState: 0
-  completeTrigger: 0
-  timeoutSeconds: 0
-  minEnabledSeconds: 0
-  showHand: 1
-  handLocalPosition: {x: 40, y: -20, z: 0}
-  handLocalRotation: {x: 0, y: 0, z: 0}
-  handLocalScale: {x: 1, y: 1, z: 1}
-  textLocalPosition: {x: 240, y: -134, z: 0}
-  textLocalRotation: {x: 0, y: 0, z: 0}
-  textSize: {x: 300, y: 200}
-  text: Click First Button!
-  textColor: {r: 1, g: 1, b: 0, a: 1}
-  alignment: 3
-  showBackgroundMask: 1
-  alpha: 168
-  clickToComplete: 0
-  timeBeforeClickable: 0
-  doNotResetPanelOnComplete: 0
-  tutorialPanel: {fileID: 0}
-  targetPath: Canvas/ButtonsPanel1/btn_1-1
-  skipIfTargetInactive: 0
-  cloneTarget: 1
-  targetFollowCloneOnUpdate: 0
-  targetCanCatchRaycast: 1
-  handFollowTarget: 1
-  textFollowTarget: 1
-  handFollowOnUpdate: 0
-  textFollowOnUpdate: 0
-  disableButtonPaths: []
-  doNotResetHighlightedObjectOnComplete: 0
-  removeHighlightedObjectPanelOnComplete: 0
---- !u!114 &114508325849437210
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1272783638576672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9cec2f5b484b42d1808201870ffbaf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tasks: []
-  _nextStep: {fileID: 0}
-  _sceneName: 
---- !u!114 &114537475000102750
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1991480191123972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9cec2f5b484b42d1808201870ffbaf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tasks: []
-  _nextStep: {fileID: 114235720153549566}
-  _sceneName: 
 --- !u!114 &114610327857699272
 MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000012680727340}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -532,11 +129,297 @@ MonoBehaviour:
   disableButtonPaths: []
   doNotResetHighlightedObjectOnComplete: 0
   removeHighlightedObjectPanelOnComplete: 0
+--- !u!1 &1272783638576672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4461676156271754}
+  - component: {fileID: 114508325849437210}
+  - component: {fileID: 114765423891346684}
+  m_Layer: 0
+  m_Name: CharacterDialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4461676156271754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272783638576672}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 491312}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114508325849437210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272783638576672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9cec2f5b484b42d1808201870ffbaf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tasks: []
+  _nextStep: {fileID: 0}
+  _sceneName: 
+--- !u!114 &114765423891346684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272783638576672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c897419c80c4b09be23bd64a4d9d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skipState: 0
+  completeTrigger: 0
+  timeoutSeconds: 0
+  minEnabledSeconds: 0
+  _dialogueList:
+  - text: Congrats! Now you completed the tutorial.
+    animNameToPlay: 
+  doNotResetPanelOnComplete: 0
+  _autoCloseDelay: 0
+--- !u!1 &1430672691923122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4185361222907892}
+  - component: {fileID: 114095351401163590}
+  - component: {fileID: 114011821229842674}
+  m_Layer: 0
+  m_Name: Intro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4185361222907892
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430672691923122}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 491312}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114095351401163590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430672691923122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9cec2f5b484b42d1808201870ffbaf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tasks: []
+  _nextStep: {fileID: 114755318228012166}
+  _sceneName: 
+--- !u!114 &114011821229842674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430672691923122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27344e11e42f549f281da9800d7ef542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skipState: 0
+  completeTrigger: 0
+  timeoutSeconds: 0
+  minEnabledSeconds: 0
+  showHand: 0
+  handLocalPosition: {x: 0, y: 0, z: 0}
+  handLocalRotation: {x: 0, y: 0, z: 0}
+  handLocalScale: {x: 1, y: 1, z: 1}
+  textLocalPosition: {x: 0, y: 0, z: 0}
+  textLocalRotation: {x: 0, y: 0, z: 0}
+  textSize: {x: 300, y: 100}
+  text: This is a demo tutorial.
+  textColor: {r: 1, g: 1, b: 1, a: 1}
+  alignment: 4
+  showBackgroundMask: 1
+  alpha: 168
+  clickToComplete: 1
+  timeBeforeClickable: 0
+  doNotResetPanelOnComplete: 0
+  tutorialPanel: {fileID: 0}
+--- !u!1 &1442236466422468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4307077403005104}
+  - component: {fileID: 114755318228012166}
+  - component: {fileID: 114442900815046514}
+  m_Layer: 0
+  m_Name: ClickFirstButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4307077403005104
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442236466422468}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 491312}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114755318228012166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442236466422468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9cec2f5b484b42d1808201870ffbaf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tasks: []
+  _nextStep: {fileID: 114537475000102750}
+  _sceneName: 
+--- !u!114 &114442900815046514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442236466422468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa51b3bfec954b5283dc6b3567ed49d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skipState: 0
+  completeTrigger: 0
+  timeoutSeconds: 0
+  minEnabledSeconds: 0
+  showHand: 1
+  handLocalPosition: {x: 40, y: -20, z: 0}
+  handLocalRotation: {x: 0, y: 0, z: 0}
+  handLocalScale: {x: 1, y: 1, z: 1}
+  textLocalPosition: {x: 240, y: -134, z: 0}
+  textLocalRotation: {x: 0, y: 0, z: 0}
+  textSize: {x: 300, y: 200}
+  text: Click First Button!
+  textColor: {r: 1, g: 1, b: 0, a: 1}
+  alignment: 3
+  showBackgroundMask: 1
+  alpha: 168
+  clickToComplete: 0
+  timeBeforeClickable: 0
+  doNotResetPanelOnComplete: 0
+  tutorialPanel: {fileID: 0}
+  targetPath: Canvas/ButtonsPanel1/btn_1-1
+  skipIfTargetInactive: 0
+  cloneTarget: 1
+  targetFollowCloneOnUpdate: 0
+  targetCanCatchRaycast: 1
+  handFollowTarget: 1
+  textFollowTarget: 1
+  handFollowOnUpdate: 0
+  textFollowOnUpdate: 0
+  disableButtonPaths: []
+  doNotResetHighlightedObjectOnComplete: 0
+  removeHighlightedObjectPanelOnComplete: 0
+--- !u!1 &1555638894718096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4427915913943226}
+  - component: {fileID: 114235720153549566}
+  - component: {fileID: 114686882034882394}
+  m_Layer: 0
+  m_Name: ClickThirdButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4427915913943226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555638894718096}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 491312}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114235720153549566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555638894718096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9cec2f5b484b42d1808201870ffbaf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tasks: []
+  _nextStep: {fileID: 114348151305167280}
+  _sceneName: 
 --- !u!114 &114686882034882394
 MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555638894718096}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -575,45 +458,60 @@ MonoBehaviour:
   disableButtonPaths: []
   doNotResetHighlightedObjectOnComplete: 0
   removeHighlightedObjectPanelOnComplete: 0
---- !u!114 &114755318228012166
+--- !u!1 &1985740247564422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4336297920416738}
+  - component: {fileID: 114348151305167280}
+  - component: {fileID: 114982162915868636}
+  - component: {fileID: 114438309906669102}
+  m_Layer: 0
+  m_Name: ActivateHiddenButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4336297920416738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985740247564422}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 491312}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114348151305167280
 MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1442236466422468}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985740247564422}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9cec2f5b484b42d1808201870ffbaf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tasks: []
-  _nextStep: {fileID: 114537475000102750}
+  _nextStep: {fileID: 114000011643280300}
   _sceneName: 
---- !u!114 &114765423891346684
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1272783638576672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6c897419c80c4b09be23bd64a4d9d1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skipState: 0
-  completeTrigger: 0
-  timeoutSeconds: 0
-  minEnabledSeconds: 0
-  _dialogueList:
-  - text: Congrats! Now you completed the tutorial.
-    animNameToPlay: 
-  doNotResetPanelOnComplete: 0
-  _autoCloseDelay: 0
 --- !u!114 &114982162915868636
 MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985740247564422}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -629,3 +527,198 @@ MonoBehaviour:
   checkOnUpdate: 0
   setPrevActivationOnComplete: 0
   targetGO: {fileID: 0}
+--- !u!114 &114438309906669102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985740247564422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27344e11e42f549f281da9800d7ef542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skipState: 0
+  completeTrigger: 0
+  timeoutSeconds: 0
+  minEnabledSeconds: 0
+  showHand: 0
+  handLocalPosition: {x: 0, y: 0, z: 0}
+  handLocalRotation: {x: 0, y: 0, z: 0}
+  handLocalScale: {x: 1, y: 1, z: 1}
+  textLocalPosition: {x: 0, y: 0, z: 0}
+  textLocalRotation: {x: 0, y: 0, z: 0}
+  textSize: {x: 200, y: 100}
+  text: New Button Appears!
+  textColor: {r: 1, g: 1, b: 0, a: 1}
+  alignment: 3
+  showBackgroundMask: 1
+  alpha: 168
+  clickToComplete: 1
+  timeBeforeClickable: 0
+  doNotResetPanelOnComplete: 0
+  tutorialPanel: {fileID: 0}
+--- !u!1 &1991480191123972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4365687801075980}
+  - component: {fileID: 114537475000102750}
+  - component: {fileID: 114309119367733362}
+  m_Layer: 0
+  m_Name: ClickSecondButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4365687801075980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991480191123972}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 491312}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114537475000102750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991480191123972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9cec2f5b484b42d1808201870ffbaf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tasks: []
+  _nextStep: {fileID: 114235720153549566}
+  _sceneName: 
+--- !u!114 &114309119367733362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991480191123972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa51b3bfec954b5283dc6b3567ed49d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skipState: 0
+  completeTrigger: 0
+  timeoutSeconds: 0
+  minEnabledSeconds: 0
+  showHand: 1
+  handLocalPosition: {x: 40, y: -20, z: 0}
+  handLocalRotation: {x: 0, y: 0, z: 0}
+  handLocalScale: {x: 1, y: 1, z: 1}
+  textLocalPosition: {x: 260, y: -28, z: 0}
+  textLocalRotation: {x: 0, y: 0, z: 0}
+  textSize: {x: 300, y: 200}
+  text: Click Second Button!
+  textColor: {r: 1, g: 1, b: 0, a: 1}
+  alignment: 3
+  showBackgroundMask: 1
+  alpha: 168
+  clickToComplete: 0
+  timeBeforeClickable: 0
+  doNotResetPanelOnComplete: 0
+  tutorialPanel: {fileID: 0}
+  targetPath: Canvas/ButtonsPanel1/btn_1-2
+  skipIfTargetInactive: 0
+  cloneTarget: 1
+  targetFollowCloneOnUpdate: 0
+  targetCanCatchRaycast: 1
+  handFollowTarget: 1
+  textFollowTarget: 1
+  handFollowOnUpdate: 0
+  textFollowOnUpdate: 0
+  disableButtonPaths: []
+  doNotResetHighlightedObjectOnComplete: 0
+  removeHighlightedObjectPanelOnComplete: 0
+--- !u!1 &3836544389939747718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7968571956302130052}
+  - component: {fileID: 5970468962290536533}
+  - component: {fileID: 7816693011490720988}
+  m_Layer: 0
+  m_Name: Dialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7968571956302130052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3836544389939747718}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 491312}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5970468962290536533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3836544389939747718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9cec2f5b484b42d1808201870ffbaf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tasks: []
+  _nextStep: {fileID: 114095351401163590}
+  _sceneName: 
+--- !u!114 &7816693011490720988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3836544389939747718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c897419c80c4b09be23bd64a4d9d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skipState: 0
+  completeTrigger: 0
+  timeoutSeconds: 0
+  minEnabledSeconds: 0
+  _dialogueList:
+  - text: Welcome to tutorial demo.
+    animNameToPlay: 
+  - text: Here you will learn how to make tutorial.
+    animNameToPlay: 
+  - text: Have fun!
+    animNameToPlay: 
+  doNotResetPanelOnComplete: 0
+  _autoCloseDelay: 0
