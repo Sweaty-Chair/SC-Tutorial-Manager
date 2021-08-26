@@ -1,6 +1,5 @@
 # SweatyChair Tutorial Manager
 [![Build status](https://ci.appveyor.com/api/projects/status/github/Sweaty-Chair/SC-Tutorial-Manager?branch=master&svg=true)](https://ci.appveyor.com/project/Sweaty-Chair/SC-Tutorial-Manager/branch/master)
-[![Join the chat](https://img.shields.io/badge/discord-join-7289DA.svg?logo=discord&longCache=true&style=flat)](https://discord.gg/qwqeBtS)
 
 > A tutorial manager system used in Unity3D games, with the aim to be used across all different games withou coding or with minimal coding. This is been used in [No Humanity](https://www.sweatychair.com/no-humanity), [3DTD: Chicka Invasion](https://www.sweatychair.com/3dtd) and [Friends Must Dungeon](https://www.sweatychair.com/friends-must-dungeon).
 
